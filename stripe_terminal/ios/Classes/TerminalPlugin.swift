@@ -204,6 +204,7 @@ public class TerminalPlugin: NSObject, FlutterPlugin, TerminalPlatformApi {
     ) throws {
         let paymentIntent = try _findPaymentIntent(paymentIntentId)
         let config = CollectConfigurationBuilder()
+            .setAllowRedisplay(AllowRedisplay.always)
             .setSurchargeNotice(surchargeNotice)
             .setRequestDynamicCurrencyConversion(requestDynamicCurrencyConversion)
             .setSkipTipping(skipTipping)
