@@ -1,5 +1,5 @@
 import 'package:mek_data_class/mek_data_class.dart';
-import 'package:mek_stripe_terminal/mek_stripe_terminal.dart';
+import 'package:mek_stripe_terminal/src/models/location.dart';
 import 'package:meta/meta.dart';
 
 part 'reader.g.dart';
@@ -13,7 +13,9 @@ enum ConnectionStatus {
   connected,
 
   /// The SDK is currently connecting to a reader.
-  connecting
+  connecting,
+
+  discovering,
 }
 
 /// Information about a card reader that has been discovered by or connected to the SDK.
@@ -123,8 +125,7 @@ enum DeviceType {
   /// The Stripe Reader M2 mobile reader.
   stripeM2,
 
-  /// COTS Device.
-  cotsDevice,
+  tapToPay,
 
   /// The Verifone P400 countertop reader.
   verifoneP400,
@@ -153,8 +154,11 @@ enum DeviceType {
   /// Stripe Reader S700 DevKit.
   stripeS700Devkit,
 
-  /// Apple Built-In reader.
-  appleBuiltIn,
+  /// Stripe Reader S710.
+  stripeS710,
+
+  /// Stripe Reader S710 DevKit.
+  stripeS710Devkit,
 }
 
 /// A categorization of a reader’s battery charge level.
@@ -181,17 +185,52 @@ enum BatteryStatus {
 
 enum ReaderEvent { cardInserted, cardRemoved }
 
+/// The display messages that a reader may request be displayed by your app. Used by [MobileReaderDelegate.onRequestReaderDisplayMessage].
 enum ReaderDisplayMessage {
+  /// Check mobile device for instructions and try again.
   checkMobileDevice,
+
+  /// Retry the presented card.
   retryCard,
+
+  /// Insert the presented card.
   insertCard,
+
+  /// Insert or swipe the presented card.
   insertOrSwipeCard,
+
+  /// Swipe the presented card.
   swipeCard,
+
+  /// Remove the presented card.
   removeCard,
+
+  /// The reader detected multiple contactless cards. Make sure only one contactless card or NFC
+  /// device is near the reader.
   multipleContactlessCardsDetected,
+
+  /// The card could not be read. Try another read method on the same card, or use a different card.
   tryAnotherReadMethod,
+
+  /// The card is invalid. Try another card.
   tryAnotherCard,
+
+  /// Card removed too early, try again.
   cardRemovedTooEarly,
 }
 
-enum ReaderInputOption { insertCard, swipeCard, tapCard, manualEntry }
+/// This OptionSet represents all of the input methods available to your user when the reader begins
+/// waiting for input. Used by [MobileReaderDelegate.onRequestReaderInput].
+enum ReaderInputOption {
+  /// Insert a chip card.
+  insertCard,
+
+  /// Swipe a magstripe card.
+  swipeCard,
+
+  /// Tap a contactless card.
+  tapCard,
+
+  /// Manually enter the card information (MOTO).
+  manualEntry
+}

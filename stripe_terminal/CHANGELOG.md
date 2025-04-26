@@ -1,3 +1,39 @@
+## 4.0.4
+- chore(android): when plugin si attached to activity the `Terminal.onCreate` method is called [#104](https://github.com/BreX900/mek-packages/issues/104)
+
+## 4.0.3
+- chore(android): removed permission check when initializing terminal
+
+## 4.0.2
+- build: updated `meta` to `1.15.0` and `one_for_all` to `1.1.1` dependency
+- build: updated `dart` constraints to `>=3.5.0 <4.0.0` and `flutter` to `>=3.24.0`
+- docs: updated README.md file
+
+## 4.0.1
+
+- docs: updated documentation
+
+## 4.0.0
+- feat: added support to [ReaderDelegate.onAcceptTermsOfService] method listener
+- fix(android): execute reader disconnect after hot restart in main thread
+- build!: Bumped [Android](https://github.com/stripe/stripe-terminal-android/blob/master/CHANGELOG.md#410---2024-11-18)
+  sdk version to `4.1.0` and [IOS](https://github.com/stripe/stripe-terminal-android/blob/master/CHANGELOG.md#410---2024-11-18)
+  sdk version to `4.1.0`. Please watch the official CHANGELOG.md to know the breaking changes
+- refactor!: Aligned terminal initialization with official native sdk. Now you will need to initialize the sdk by
+  calling `Terminal.initTerminal`
+
+## 3.8.1
+- doc: updated README.md file adding official documentation links
+
+## 3.8.0
+- build: Bumped [Android](https://github.com/stripe/stripe-terminal-android/blob/master/CHANGELOG.md#3101---2024-11-05)
+  sdk version to `3.10.1` and [IOS](https://github.com/stripe/stripe-terminal-android/blob/master/CHANGELOG.md#3101---2024-11-05)
+  sdk version to `3.9.1`
+- feat: Added to `Terminal.collectPaymentMethod` method the `requestDynamicCurrencyConversion` and `surchargeNotice` params
+- feat: Added to `TerminalExceptionCode` enum the `allowRedisplayInvalid`, `surchargingNotAvailable`, `surchargeNoticeRequiresUpdatePaymentIntent`,
+  `surchargeUnavailableWithDynamicCurrencyConversion` values
+- build: Bumped android sdk compile version to `35` 
+
 ## 3.7.0
 - chore: Bumped [Android](https://github.com/stripe/stripe-terminal-android/blob/master/CHANGELOG.md#371---2024-07-05)
   and [IOS](https://github.com/stripe/stripe-terminal-ios/blob/master/CHANGELOG.md#370-2024-06-24) sdks versions to

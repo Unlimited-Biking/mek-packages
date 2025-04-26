@@ -4,8 +4,8 @@ Demonstrates how to use the stripe_terminal plugin.
 
 ## Getting Started
 
-1. Create a .config.json file with `STRIPE_SECRET_KEY` [(example file)](example_config.json)
-2. Run the app with `--dart-define-from-file=.config.json`, for example:
+1. Create a `.env` file with `STRIPE_SECRET_KEY` [(example file)](.env-example)
+2. Run the app with `--dart-define-from-file=.env`, for example:
     ```bash
-    flutter run --dart-define-from-file=.config.json
+    flutter run --dart-define-from-file=.env
     ```
